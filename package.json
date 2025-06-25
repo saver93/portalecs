@@ -1,7 +1,7 @@
 {
   "name": "portale-aziendale",
-  "version": "2.0.0",
-  "description": "Sistema integrato per la gestione delle richieste risorse e del parco auto aziendale con interfaccia moderna e dark mode",
+  "version": "2.1.0",
+  "description": "Sistema integrato per la gestione delle richieste risorse e del parco auto aziendale con interfaccia moderna, dark mode e sistema di notifiche completo",
   "private": true,
   "scripts": {
     "dev": "next dev",

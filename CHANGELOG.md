@@ -1,5 +1,66 @@
 # 📋 Changelog - Portale Aziendale
 
+## [2.1.0] - 2025-06-25
+
+### 🎉 Nuove Funzionalità
+
+#### Sistema di Notifiche Completo
+- **Notifiche Real-time**: Implementato con Supabase Realtime
+- **Toast Notifications**: Feedback immediato per tutte le azioni
+- **Badge Navbar**: Contatore notifiche non lette con dropdown
+- **Pagina Notifiche**: Vista completa con filtri e azioni batch
+- **Notifiche Email**: Edge Function per invio email automatiche
+- **Notifiche Browser**: Web Push API per notifiche desktop
+- **Trigger Automatici**: Database trigger per eventi importanti
+
+#### Integrazioni Notifiche
+- **Richieste**: Notifiche per approvazione/rifiuto e nuove richieste
+- **Veicoli**: Notifiche per assegnazioni e scadenze
+- **Utenti**: Notifiche di benvenuto e cambio ruolo
+- **Scadenze**: Check automatico giornaliero con Edge Function
+
+### 🔧 Miglioramenti
+
+- Rimossi tutti gli alert() in favore di toast notifications
+- Feedback utente migliorato per tutte le operazioni
+- Comunicazione real-time tra utenti
+- Sistema di template per email HTML
+- Configurazione centralizzata notifiche
+- Hook riutilizzabili per azioni con notifiche
+
+### 📁 File Aggiunti
+
+- `src/contexts/NotificationContext.tsx` - Context per gestione notifiche
+- `src/components/Toast.tsx` - Componente toast notifications
+- `src/components/NotificationBadge.tsx` - Badge per navbar
+- `src/utils/notifications.ts` - Utility per creare notifiche
+- `src/hooks/useNotificationActions.ts` - Hook per azioni comuni
+- `src/config/notifications.ts` - Configurazione sistema
+- `supabase/functions/send-email/` - Edge Function email
+- `supabase/functions/check-expiries/` - Edge Function scadenze
+- `notification-triggers.sql` - Trigger database
+- `email-logs-table.sql` - Tabella log email
+
+### 📚 Documentazione
+
+- `NOTIFICATIONS_GUIDE.md` - Guida completa sistema notifiche
+- `NOTIFICATIONS_IMPLEMENTATION_COMPLETE.md` - Riepilogo implementazioni
+- `EDGE_FUNCTIONS_DEPLOY_GUIDE.md` - Guida deploy Edge Functions
+- `DEPLOY_GUIDE_UPDATED.md` - Guida aggiornata con NPX
+
+---
+
+## [2.0.0] - 2024-12-XX
+
+### 🎉 UI/UX Completamente Ridisegnata
+- Dark Mode completo
+- Animazioni fluide
+- Design moderno glassmorphism
+- Componenti UI riutilizzabili
+- Responsive design migliorato
+
+---
+
 ## [1.3.2] - 2024-01-24
 
 ### 🎉 Nuove Funzionalità
@@ -157,8 +218,10 @@
 
 ## 🔮 Prossime Release (Roadmap)
 
-### [1.3.0] - Pianificata
-- [ ] Sistema di notifiche email automatiche
+### [2.2.0] - Pianificata
+- [ ] Push notifications per mobile
+- [ ] Digest email settimanale
+- [ ] Preferenze notifiche utente
 - [ ] Reset password via email
 - [ ] Upload foto profilo
 - [ ] Export dati in Excel/PDF
