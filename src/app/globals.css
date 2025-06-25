@@ -1,0 +1,495 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light theme colors */
+    --color-primary-50: 239 246 255;
+    --color-primary-100: 219 234 254;
+    --color-primary-200: 191 219 254;
+    --color-primary-300: 147 197 253;
+    --color-primary-400: 96 165 250;
+    --color-primary-500: 59 130 246;
+    --color-primary-600: 37 99 235;
+    --color-primary-700: 29 78 216;
+    --color-primary-800: 30 64 175;
+    --color-primary-900: 30 58 138;
+    
+    /* Semantic colors */
+    --color-success: 34 197 94;
+    --color-warning: 251 191 36;
+    --color-danger: 239 68 68;
+    --color-info: 59 130 246;
+    
+    /* Background colors */
+    --color-bg-primary: 255 255 255;
+    --color-bg-secondary: 249 250 251;
+    --color-bg-tertiary: 243 244 246;
+    
+    /* Text colors */
+    --color-text-primary: 17 24 39;
+    --color-text-secondary: 75 85 99;
+    --color-text-tertiary: 156 163 175;
+    
+    /* Border colors */
+    --color-border-primary: 229 231 235;
+    --color-border-secondary: 209 213 219;
+    
+    /* Shadow */
+    --shadow-color: 0 0 0;
+  }
+  
+  [data-theme="dark"] {
+    /* Dark theme colors */
+    --color-primary-50: 30 58 138;
+    --color-primary-100: 30 64 175;
+    --color-primary-200: 29 78 216;
+    --color-primary-300: 37 99 235;
+    --color-primary-400: 59 130 246;
+    --color-primary-500: 96 165 250;
+    --color-primary-600: 147 197 253;
+    --color-primary-700: 191 219 254;
+    --color-primary-800: 219 234 254;
+    --color-primary-900: 239 246 255;
+    
+    /* Semantic colors */
+    --color-success: 34 197 94;
+    --color-warning: 251 191 36;
+    --color-danger: 239 68 68;
+    --color-info: 59 130 246;
+    
+    /* Background colors */
+    --color-bg-primary: 17 24 39;
+    --color-bg-secondary: 31 41 55;
+    --color-bg-tertiary: 55 65 81;
+    
+    /* Text colors */
+    --color-text-primary: 243 244 246;
+    --color-text-secondary: 209 213 219;
+    --color-text-tertiary: 156 163 175;
+    
+    /* Border colors */
+    --color-border-primary: 55 65 81;
+    --color-border-secondary: 75 85 99;
+    
+    /* Shadow */
+    --shadow-color: 255 255 255;
+  }
+  
+  body {
+    @apply bg-bg-secondary text-text-primary transition-colors duration-300;
+  }
+  
+  * {
+    @apply border-border-primary;
+  }
+}
+
+@layer components {
+  /* Enhanced buttons with animations */
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium transition-all duration-200 transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .btn-primary {
+    @apply btn bg-primary-600 text-white hover:bg-primary-700 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 shadow-sm hover:shadow-md;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-bg-tertiary text-text-primary hover:bg-gray-300 dark:hover:bg-gray-600 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2;
+  }
+  
+  .btn-danger {
+    @apply btn bg-red-600 text-white hover:bg-red-700 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 shadow-sm hover:shadow-md;
+  }
+  
+  .btn-ghost {
+    @apply btn bg-transparent hover:bg-bg-tertiary text-text-secondary hover:text-text-primary;
+  }
+  
+  .btn-icon {
+    @apply p-2 rounded-lg hover:bg-bg-tertiary transition-colors duration-200;
+  }
+  
+  /* Enhanced input fields */
+  .input-field {
+    @apply w-full px-4 py-2.5 bg-bg-primary border border-border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 placeholder:text-text-tertiary;
+  }
+  
+  .input-error {
+    @apply border-red-500 focus:ring-red-500;
+  }
+  
+  /* Enhanced cards with hover effects */
+  .card {
+    @apply bg-bg-primary rounded-xl shadow-sm border border-border-primary p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5;
+  }
+  
+  .card-interactive {
+    @apply card cursor-pointer hover:border-primary-500;
+  }
+  
+  /* Glass morphism effect */
+  .glass {
+    @apply backdrop-blur-lg bg-white/70 dark:bg-gray-900/70 border border-white/20 dark:border-gray-700/20;
+  }
+  
+  /* Badges */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .badge-success {
+    @apply badge bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400;
+  }
+  
+  .badge-warning {
+    @apply badge bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400;
+  }
+  
+  .badge-danger {
+    @apply badge bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400;
+  }
+  
+  .badge-info {
+    @apply badge bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400;
+  }
+  
+  /* Tooltips */
+  .tooltip {
+    @apply relative inline-block;
+  }
+  
+  .tooltip-content {
+    @apply invisible opacity-0 absolute z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 dark:bg-gray-700 rounded-lg shadow-sm transition-all duration-200 whitespace-nowrap bottom-full left-1/2 transform -translate-x-1/2 -translate-y-2;
+  }
+  
+  .tooltip:hover .tooltip-content {
+    @apply visible opacity-100;
+  }
+  
+  /* Smooth scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-bg-secondary;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 dark:bg-gray-600 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500 dark:bg-gray-500;
+  }
+  
+  /* Loading spinner */
+  .spinner {
+    @apply inline-block w-5 h-5 border-2 border-primary-600 border-t-transparent rounded-full animate-spin;
+  }
+  
+  /* Skeleton loader */
+  .skeleton {
+    @apply animate-pulse bg-gray-200 dark:bg-gray-700 rounded;
+  }
+  
+  /* Focus visible styles */
+  .focus-visible-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2;
+  }
+}
+
+@layer utilities {
+  /* Custom animations */
+  @keyframes slideInUp {
+    from {
+      transform: translateY(10px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideDown {
+    from {
+      transform: translateY(-10px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  
+  .animate-slideInUp {
+    animation: slideInUp 0.3s ease-out;
+  }
+  
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  .animate-scaleIn {
+    animation: scaleIn 0.2s ease-out;
+  }
+  
+  .animate-slideDown {
+    animation: slideDown 0.3s ease-out;
+  }
+  
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent;
+  }
+  
+  /* Responsive utilities */
+  .container-responsive {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Grid utilities */
+  .grid-auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+/* Custom color utilities using CSS variables */
+.bg-bg-primary { background-color: rgb(var(--color-bg-primary)); }
+.bg-bg-secondary { background-color: rgb(var(--color-bg-secondary)); }
+.bg-bg-tertiary { background-color: rgb(var(--color-bg-tertiary)); }
+
+.text-text-primary { color: rgb(var(--color-text-primary)); }
+.text-text-secondary { color: rgb(var(--color-text-secondary)); }
+.text-text-tertiary { color: rgb(var(--color-text-tertiary)); }
+
+.border-border-primary { border-color: rgb(var(--color-border-primary)); }
+.border-border-secondary { border-color: rgb(var(--color-border-secondary)); }
+
+/* Primary color utilities */
+.bg-primary-50 { background-color: rgb(var(--color-primary-50)); }
+.bg-primary-100 { background-color: rgb(var(--color-primary-100)); }
+.bg-primary-200 { background-color: rgb(var(--color-primary-200)); }
+.bg-primary-300 { background-color: rgb(var(--color-primary-300)); }
+.bg-primary-400 { background-color: rgb(var(--color-primary-400)); }
+.bg-primary-500 { background-color: rgb(var(--color-primary-500)); }
+.bg-primary-600 { background-color: rgb(var(--color-primary-600)); }
+.bg-primary-700 { background-color: rgb(var(--color-primary-700)); }
+.bg-primary-800 { background-color: rgb(var(--color-primary-800)); }
+.bg-primary-900 { background-color: rgb(var(--color-primary-900)); }
+
+/* Responsive font sizes */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Print styles remain the same */
+@media print {
+  /* Hide everything when printing single request */
+  .print-hide-all {
+    display: none !important;
+  }
+
+  /* Hide modal by default in print */
+  .print-hide {
+    display: none !important;
+  }
+
+  /* Show only the single request modal when flagged */
+  .print-show {
+    display: block !important;
+    position: static !important;
+    padding: 0 !important;
+    background: white !important;
+    min-height: 100vh !important;
+  }
+
+  /* Ensure modal content is visible and properly formatted */
+  .print-show > * {
+    display: block !important;
+    max-width: 100% !important;
+  }
+
+  /* Reset modal positioning for print */
+  .print-single-request.print-show {
+    position: static !important;
+    inset: auto !important;
+    z-index: auto !important;
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+
+  /* When printing single request, hide everything else */
+  body.printing-single-request > *:not(.print-single-request) {
+    display: none !important;
+  }
+
+  /* Ensure the modal is visible when body has printing class */
+  body.printing-single-request .print-single-request {
+    display: block !important;
+    position: static !important;
+  }
+  /* Reset page margins */
+  @page {
+    margin: 1cm;
+    size: A4;
+  }
+
+  /* Hide navigation and unnecessary elements */
+  nav,
+  .print\\:hidden {
+    display: none !important;
+  }
+
+  /* Show print-only elements */
+  .print\\:block {
+    display: block !important;
+  }
+
+  .print\\:inline {
+    display: inline !important;
+  }
+
+  /* Remove backgrounds and shadows */
+  * {
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Ensure text is black for better readability */
+  body,
+  .print\\:text-black {
+    color: black !important;
+  }
+
+  /* Table styles for printing */
+  table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+  }
+
+  table th,
+  table td {
+    border: 1px solid #ddd !important;
+    padding: 8px !important;
+  }
+
+  table th {
+    background-color: #f5f5f5 !important;
+    font-weight: bold !important;
+  }
+
+  /* Ensure links are visible */
+  a {
+    text-decoration: underline !important;
+  }
+
+  /* Page breaks */
+  .page-break-before {
+    page-break-before: always;
+  }
+
+  .page-break-after {
+    page-break-after: always;
+  }
+
+  /* Avoid breaking inside elements */
+  tr,
+  img,
+  .avoid-break {
+    page-break-inside: avoid;
+  }
+
+  /* Remove hover effects */
+  .hover\\:bg-gray-50:hover {
+    background-color: transparent !important;
+  }
+
+  /* Adjust spacing */
+  .print\\:py-0 {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .print\\:px-0 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .print\\:px-2 {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+
+  /* Hide interactive elements */
+  button,
+  select,
+  input[type="checkbox"],
+  input[type="radio"] {
+    display: none !important;
+  }
+
+  /* Ensure content fits on page */
+  .overflow-hidden {
+    overflow: visible !important;
+  }
+
+  /* Remove rounded corners for cleaner print */
+  .rounded-lg,
+  .rounded {
+    border-radius: 0 !important;
+  }
+
+  /* Adjust margins */
+  .mb-8 {
+    margin-bottom: 1rem !important;
+  }
+
+  /* Ensure badges are readable */
+  .bg-gray-100,
+  .bg-yellow-100,
+  .bg-red-100 {
+    background-color: transparent !important;
+    border: 1px solid #666 !important;
+  }
+}
